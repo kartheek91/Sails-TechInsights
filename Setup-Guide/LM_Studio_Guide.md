@@ -15,7 +15,7 @@ Before installing LM Studio, ensure your system meets the following requirements
 ## Installation Steps
 
 ### Step 1: Download LM Studio
-1. Visit the official LM Studio website. (LmStudio-Ai)
+1. Visit the official LM Studio website. [LMStudio-AI](https://lmstudio.ai/)
 2. Navigate to the Downloads section.
 3. Select the appropriate installer for your operating system.
 4. Download the installer to your local machine (approx. 500 MB).
