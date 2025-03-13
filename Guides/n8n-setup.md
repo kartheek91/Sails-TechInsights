@@ -76,19 +76,7 @@ Fill-In All The Fields And Then Click Next. Then You'll be redirected to the das
 ollama list
 ```
 
-
-### Run a Model
-
-If there is no model present inside Ollama, you can either pull the image of the models or run the model directly.
-
-To run a model:
-
-```sh
-ollama run model_name
-```
-
-
-![Ollama pull docxker](https://github.com/user-attachments/assets/82a9ffac-b079-4d48-9883-3d2b4c1d02e7)
+![Ollama image](https://github.com/user-attachments/assets/ad91b961-8829-4217-973b-2dea2e2ee7f9)
 
 
 ### Run Particular Model Inside Ollama
@@ -96,4 +84,9 @@ ollama run model_name
 If you wish to install a particular model from Ollama navigate to their official page and search for the model
 
 ![ollama pull llama](https://github.com/user-attachments/assets/13d36f23-7d85-47e7-9d68-984c5449961b)
+
+
+Once you find a suitable model you can run it using 
+```sh
+ollama run model_name
 
