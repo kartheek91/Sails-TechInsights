@@ -67,8 +67,6 @@ Fill-In All The Fields And Then Click Next. Then You'll be redirected to the das
 
 ![Docker Show Up fro n8n](https://github.com/user-attachments/assets/f3190c8e-d5bd-46c9-8f7a-d62e18b3a7ef)
 
-![Ollama image](https://github.com/user-attachments/assets/bd7d8a4f-3280-4ba3-9167-28428e43bf26)
-
 
 ### Check if any model is present inside Ollama
 
