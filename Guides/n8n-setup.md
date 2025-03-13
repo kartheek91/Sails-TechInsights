@@ -3,6 +3,7 @@
 ## Pre-requisite
 
 - Install Git by searching `git download for windows`
+  
   ![Git Screenshot](https://github.com/user-attachments/assets/6526acc4-14e7-4d12-855b-d3208df2de70)
 
 - Install the 64 bit version.
@@ -49,19 +50,13 @@ docker compose --profile cpu up
 
 ### Access the n8n Interface
 
-Once the container is running, open your browser and go to:
-
-[http://localhost:5678](http://localhost:5678)
+Once the container is running, open your browser and go to: [http://localhost:5678](http://localhost:5678)
 
 ---
 
 ![n8n Startup Page](https://github.com/user-attachments/assets/fc654e2d-a117-4b73-8e87-799f19a33b0a)
 
-Fill-In All The Fields And Then Click Next
-
-![n8n Startup Page](https://github.com/user-attachments/assets/f923ebe2-4276-410a-a2b7-4c8d46e0cc09)
-
-Then You'll be redirected to the dashboard or the Home-Page Of N8N
+Fill-In All The Fields And Then Click Next. Then You'll be redirected to the dashboard or the Home-Page Of N8N
 
 ![n8n home screen](https://github.com/user-attachments/assets/8ac3c840-4940-442d-ac96-e57c52f5d677)
 
