@@ -6,6 +6,6 @@
 
 ### For N8n Setup
 
-- [Docker](Setup-Guide/n8n-setup.md)
+- [N8N](Setup-Guide/n8n-setup.md)
 
 
