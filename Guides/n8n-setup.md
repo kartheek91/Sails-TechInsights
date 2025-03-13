@@ -5,7 +5,7 @@
 - Install Git by searching `git download for windows`
   ![Git Screenshot](https://github.com/user-attachments/assets/6526acc4-14e7-4d12-855b-d3208df2de70)
 
-Install the 64 bit version.
+- Install the 64 bit version.
 
 ## Overview
 
@@ -15,7 +15,7 @@ Install the 64 bit version.
 
 ### Clone the Repository
 
-Open a terminal and run:
+- Open a terminal and run:
 
 ```sh
 git clone https://github.com/n8n-io/self-hosted-ai-starter-kit.git
@@ -23,7 +23,7 @@ git clone https://github.com/n8n-io/self-hosted-ai-starter-kit.git
 
 ![Git Clone N8N Screenshot](https://github.com/user-attachments/assets/00f57987-406e-434c-998d-a268820f5528)
 
-Create a new directory in your system and then clone the repository there
+- Create a new directory in your system and then clone the repository there
 
 ![git clone repo screenshot](https://github.com/user-attachments/assets/e497e7f3-046f-40c5-8fb1-d5dfd438d5e3)
 
@@ -36,7 +36,7 @@ cd self-hosted-ai-starter-kit
 
 ### Start n8n with Docker
 
-Run the following command to start the container:
+- Run the following command to start the container:
 
 ```sh
 docker compose --profile cpu up
@@ -81,19 +81,24 @@ Then You'll be redirected to the dashboard or the Home-Page Of N8N
 ollama list
 ```
 
-### Pull a Model
 
-If there is no model present inside Ollama, you can pull the image of the models from the official website and search for the particular model there.
+### Run a Model
 
-To pull a model:
+If there is no model present inside Ollama, you can either pull the image of the models or run the model directly.
+
+To run a model:
 
 ```sh
-ollama pull model_name
+ollama run model_name
 ```
+
 
 ![Ollama pull docxker](https://github.com/user-attachments/assets/82a9ffac-b079-4d48-9883-3d2b4c1d02e7)
 
 
+### Run Particular Model Inside Ollama
+
 If you wish to install a particular model from Ollama navigate to their official page and search for the model
+
 ![ollama pull llama](https://github.com/user-attachments/assets/13d36f23-7d85-47e7-9d68-984c5449961b)
 
