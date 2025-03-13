@@ -87,4 +87,8 @@ If you wish to install a particular model from Ollama navigate to their official
 Once you find a suitable model you can run it using 
 ```sh
 ollama run model_name
+```
+
+![Ollama pull docxker](https://github.com/user-attachments/assets/3e95cf11-90ab-4025-a5ae-5fa320512995)
+
 
