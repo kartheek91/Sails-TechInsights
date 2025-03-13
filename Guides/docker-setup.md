@@ -11,7 +11,7 @@
 ### Download Docker Desktop
 
 Visit [Docker's official website](https://www.docker.com/) and download the latest version of Docker Desktop for Windows.
-Workshop Screenshots\Docker Desktop Installation Window.png
+![Docker Desktop Installation Window](https://github.com/user-attachments/assets/bf4a4a2d-2956-48f9-9378-c404636b62d9)
 
 ### Run the Installer
 
@@ -27,9 +27,12 @@ Workshop Screenshots\Docker Desktop Installation Window.png
   ```sh
   docker --version
   ```
+or Open Docker Desktop Appliaction from the windows start menu
+![Docker Desktop Vire ](https://github.com/user-attachments/assets/0b3a5f3a-6229-4ef8-b210-e661247b6fd4)
+
 
 ### If you are still confused
-- Follow this page for Better Understanding: [text](https://www.geeksforgeeks.org/how-to-install-docker-on-windows/)
+- Follow this page for Better Understanding: [Docker-Setup-GeeksForGeeks](https://www.geeksforgeeks.org/how-to-install-docker-on-windows/)
 
 
 ## Installing Docker on a Different Drive(If You Have Less Space In C Drive)
