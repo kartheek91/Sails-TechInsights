@@ -61,3 +61,6 @@ deactivate
 
 Your virtual environment is now set up and ready for development!
 
+> **Note:** If Need more Info Use below Link.
+ 
+[VS Code Jupyter Notebook Documentation](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
