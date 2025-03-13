@@ -11,7 +11,7 @@
 ### Download Docker Desktop
 
 Visit [Docker's official website](https://www.docker.com/) and download the latest version of Docker Desktop for Windows.
-Workshop Screenshots\Docker Desktop Installation Window.png
+![Docker Desktop Installation Window](https://github.com/user-attachments/assets/bf4a4a2d-2956-48f9-9378-c404636b62d9)
 
 ### Run the Installer
 
