@@ -1,0 +1,183 @@
+{
+  "name": "PostgreSQL at Your Command: Real-time Chat with N8N!​",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "037d1c69-682b-4013-979e-26994019849d",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        -20,
+        -340
+      ],
+      "webhookId": "cf1de04f-3e38-426c-89f0-3bdb110a5dcf",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -120
+      ],
+      "id": "24527791-546b-46b3-b4b0-9db6eee3107e",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "xHuYe0MDGOs9IpBW",
+          "name": "Local Ollama service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        260,
+        -340
+      ],
+      "id": "71fc5157-1ea6-47b8-aaf4-01429e23db77",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        360,
+        -120
+      ],
+      "id": "58e69994-810e-4186-b749-5a862298a973",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM drugitem LIMIT 5",
+        "options": {}
+      },
+      "id": "f4eef131-d56e-4ac1-8b8b-8606eceb1b96",
+      "name": "Execute SQL Query",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        540,
+        -120
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "ViAdiUBGBuFJKeLL",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get list of all tables with their schema in the database",
+        "operation": "executeQuery",
+        "query": "SELECT \n    table_schema,\n    table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE'\n    AND table_schema NOT IN ('pg_catalog', 'information_schema')\nORDER BY table_schema, table_name;",
+        "options": {}
+      },
+      "id": "99854990-102e-4438-859e-02392f98ac64",
+      "name": "Get DB Schema and Tables List",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        720,
+        -120
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "ViAdiUBGBuFJKeLL",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute SQL Query": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get DB Schema and Tables List": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "69a2b910-7a11-44fa-8773-f273b95c8a2e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
+  },
+  "id": "s1nrl3rAavQJB6T0",
+  "tags": [
+    {
+      "createdAt": "2025-03-14T12:40:29.430Z",
+      "updatedAt": "2025-03-14T12:40:29.430Z",
+      "id": "UHWVebjxDrhzTcnX",
+      "name": "GVP-Workshop"
+    }
+  ]
+}

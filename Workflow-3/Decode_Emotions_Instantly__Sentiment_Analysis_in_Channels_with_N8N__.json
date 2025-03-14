@@ -1,0 +1,231 @@
+{
+  "name": "Decode Emotions Instantly: Sentiment Analysis in Channels with N8N!​",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        -220
+      ],
+      "id": "e34f3bbd-a028-4dd4-8b2f-d5f6c601a1fa",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "channelMessage",
+        "operation": "getAll",
+        "teamId": {
+          "__rl": true,
+          "value": "658c67d1-5389-4108-9232-e2b10102e11f",
+          "mode": "list",
+          "cachedResultName": "Sails Software"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "19:effc6762f5a64a51a36c7009d8fd4c34@thread.tacv2",
+          "mode": "list",
+          "cachedResultName": "Data Engineering COE",
+          "cachedResultUrl": "https://teams.microsoft.com/l/channel/19%3Aeffc6762f5a64a51a36c7009d8fd4c34%40thread.tacv2/Data%20Engineering%20COE?groupId=658c67d1-5389-4108-9232-e2b10102e11f&tenantId=f41c0fb4-85fd-4993-b320-77faf9d8d07f&allowXTenantAccess=True&ngc=True"
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.microsoftTeams",
+      "typeVersion": 2,
+      "position": [
+        -540,
+        -220
+      ],
+      "id": "2283a763-ed0a-4a6e-97ea-63ea9334b22c",
+      "name": "Microsoft Teams",
+      "credentials": {
+        "microsoftTeamsOAuth2Api": {
+          "id": "LzFoFK2oTPwuMJiy",
+          "name": "Microsoft Teams account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.body.content }}",
+        "options": {
+          "categories": "Positive, Negative",
+          "includeDetailedResults": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -220
+      ],
+      "id": "587610f7-048c-4402-bab4-b6f53ed6f063",
+      "name": "Sentiment Analysis"
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "899c4585-9ece-4ad0-a880-169ab6c72efe",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "xHuYe0MDGOs9IpBW",
+          "name": "Local Ollama service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "channelMessage",
+        "teamId": {
+          "__rl": true,
+          "value": "658c67d1-5389-4108-9232-e2b10102e11f",
+          "mode": "list",
+          "cachedResultName": "Sails Software"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "19:effc6762f5a64a51a36c7009d8fd4c34@thread.tacv2",
+          "mode": "list",
+          "cachedResultName": "Data Engineering COE",
+          "cachedResultUrl": "https://teams.microsoft.com/l/channel/19%3Aeffc6762f5a64a51a36c7009d8fd4c34%40thread.tacv2/Data%20Engineering%20COE?groupId=658c67d1-5389-4108-9232-e2b10102e11f&tenantId=f41c0fb4-85fd-4993-b320-77faf9d8d07f&allowXTenantAccess=True&ngc=True"
+        },
+        "message": "=Sentiment Analysis Result\n\nInput Message: {{ $('Microsoft Teams').item.json.body.content }}\n\n\nCategory: {{ $json.sentimentAnalysis.category }}\nStrength: {{ $json.sentimentAnalysis.strength }}(Indicating very negative sentiment)\nConfidence: {{ $json.sentimentAnalysis.confidence }}\n",
+        "options": {
+          "makeReply": "={{ $('Microsoft Teams').item.json.id }}"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftTeams",
+      "typeVersion": 2,
+      "position": [
+        80,
+        -320
+      ],
+      "id": "84e30e1a-532f-40e3-b1b8-adc4c20b0500",
+      "name": "Positive",
+      "credentials": {
+        "microsoftTeamsOAuth2Api": {
+          "id": "LzFoFK2oTPwuMJiy",
+          "name": "Microsoft Teams account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "channelMessage",
+        "teamId": {
+          "__rl": true,
+          "value": "658c67d1-5389-4108-9232-e2b10102e11f",
+          "mode": "list",
+          "cachedResultName": "Sails Software"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "19:effc6762f5a64a51a36c7009d8fd4c34@thread.tacv2",
+          "mode": "list",
+          "cachedResultName": "Data Engineering COE",
+          "cachedResultUrl": "https://teams.microsoft.com/l/channel/19%3Aeffc6762f5a64a51a36c7009d8fd4c34%40thread.tacv2/Data%20Engineering%20COE?groupId=658c67d1-5389-4108-9232-e2b10102e11f&tenantId=f41c0fb4-85fd-4993-b320-77faf9d8d07f&allowXTenantAccess=True&ngc=True"
+        },
+        "message": "=Sentiment Analysis Result\n\nInput Message:\n{{ $('Microsoft Teams').item.json.body.content }}\n\nCategory: {{ $json.sentimentAnalysis.category }}\nStrength: {{ $json.sentimentAnalysis.strength }}(Indicating very negative sentiment)\nConfidence: {{ $json.sentimentAnalysis.confidence }}\n",
+        "options": {
+          "makeReply": "={{ $('Microsoft Teams').item.json.id }}"
+        }
+      },
+      "type": "n8n-nodes-base.microsoftTeams",
+      "typeVersion": 2,
+      "position": [
+        80,
+        -60
+      ],
+      "id": "f28473ea-47c8-49c2-8c79-3967bc97720f",
+      "name": "Negative",
+      "credentials": {
+        "microsoftTeamsOAuth2Api": {
+          "id": "LzFoFK2oTPwuMJiy",
+          "name": "Microsoft Teams account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Teams",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft Teams": {
+      "main": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment Analysis": {
+      "main": [
+        [
+          {
+            "node": "Positive",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Negative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "01533aad-9926-4704-ac55-7e76a5b8fc30",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
+  },
+  "id": "dfu0rrX0aTE8Fqvp",
+  "tags": [
+    {
+      "createdAt": "2025-03-14T12:40:29.430Z",
+      "updatedAt": "2025-03-14T12:40:29.430Z",
+      "id": "UHWVebjxDrhzTcnX",
+      "name": "GVP-Workshop"
+    }
+  ]
+}
