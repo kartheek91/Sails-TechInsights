@@ -40,7 +40,7 @@ cd self-hosted-ai-starter-kit
 - Run the following command to start the container:
 
 ```sh
-docker compose --profile cpu up
+docker-compose --profile cpu up
 ```
 
 ![docker compose up command for n8n ](https://github.com/user-attachments/assets/f53610a1-968d-4dcf-b231-f207b15d86a9)
