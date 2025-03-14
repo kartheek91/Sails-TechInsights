@@ -1,0 +1,178 @@
+{
+  "name": "Workshop File 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7600194e-a9b8-4d38-a938-9bbc0fe1f54b",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "position": [
+        400,
+        -100
+      ],
+      "webhookId": "cf1de04f-3e38-426c-89f0-3bdb110a5dcf",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:0.5b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        600,
+        120
+      ],
+      "id": "c369c901-6b62-4fa1-bfef-c210bc0fdff6",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "DBiIN8AD6HthF2KK",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        680,
+        -100
+      ],
+      "id": "be82ec61-14f2-4b72-a116-887b96aad1a7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        780,
+        120
+      ],
+      "id": "693c993d-2337-4613-9ec4-78e9d9f81f3d",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get the data from postgres",
+        "operation": "executeQuery",
+        "query": "SELECT * FROM USER_DRUG_MAPPING",
+        "options": {}
+      },
+      "id": "07389f09-0e89-42c1-bf1b-15ad6255491a",
+      "name": "Execute SQL Query",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        960,
+        120
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "Atgwgm5vBTOYKVJa",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get list of all tables with their schema in the database",
+        "operation": "executeQuery",
+        "query": "SELECT \n    table_schema,\n    table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE'\n    AND table_schema NOT IN ('pg_catalog', 'information_schema')\nORDER BY table_schema, table_name;",
+        "options": {}
+      },
+      "id": "e28053dc-d70f-4e4c-9cf3-d615083cd682",
+      "name": "Get DB Schema and Tables List",
+      "type": "n8n-nodes-base.postgresTool",
+      "position": [
+        1140,
+        120
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "Atgwgm5vBTOYKVJa",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute SQL Query": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get DB Schema and Tables List": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dfc98f26-f4f5-4cfa-a305-057947019564",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
+  },
+  "id": "J53DysEk6KLEcgaY",
+  "tags": []
+}
