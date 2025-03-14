@@ -52,7 +52,7 @@ This n8n workflow creates an AI-powered chat interface that can interact with a 
 ## Purpose
 
 This workflow creates an intelligent chat interface that can:
-- Answer queries about user drug mappings
+- Answer queries about the table rows and columns
 - Provide information about the database structure
 - Maintain context across conversations
 - Execute database queries based on natural language requests
@@ -60,7 +60,7 @@ This workflow creates an intelligent chat interface that can:
 ## Usage
 
 1. Start a chat conversation through the provided interface
-2. Ask questions about the drug mapping data or database structure
+2. Ask questions about the table data or database structure
 3. The AI agent will process your request and provide relevant information from the database
 
 ## Note
