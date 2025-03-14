@@ -1,0 +1,323 @@
+{
+  "name": "PostgreSQL to CSV: Automate Data Exports with N8N Magic!​",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cc874e91-34f4-4b01-8267-77434bd953c3",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -40,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "filePath": "/data/shared/drugitem.csv"
+      },
+      "id": "b9e9407e-f28d-49d2-84b1-4a7b2b097334",
+      "name": "Read From File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [
+        380,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "884c63c7-edcc-493f-a947-57e3f6768236",
+      "name": "Convert To Spreadsheet",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "position": [
+        580,
+        -60
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "drugitem",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "mapping_id"
+          ],
+          "schema": [
+            {
+              "id": "mapping_id",
+              "displayName": "mapping_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "drug_id",
+              "displayName": "drug_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "brand_name",
+              "displayName": "brand_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "generic_name",
+              "displayName": "generic_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "prescription_date",
+              "displayName": "prescription_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "end_date",
+              "displayName": "end_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "dosage",
+              "displayName": "dosage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "administration_route",
+              "displayName": "administration_route",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "frequency",
+              "displayName": "frequency",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "prescribing_doctor",
+              "displayName": "prescribing_doctor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "pharmacy_name",
+              "displayName": "pharmacy_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "pharmacy_address",
+              "displayName": "pharmacy_address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "refills_remaining",
+              "displayName": "refills_remaining",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "special_instructions",
+              "displayName": "special_instructions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "side_effects_reported",
+              "displayName": "side_effects_reported",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "d2f4a5bb-0496-4ba2-a327-b48670de5880",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "position": [
+        840,
+        -60
+      ],
+      "typeVersion": 2.5,
+      "credentials": {
+        "postgres": {
+          "id": "ViAdiUBGBuFJKeLL",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE if not exists drugitem (\n    mapping_id SERIAL PRIMARY KEY,\n    user_id INT NOT NULL,\n    drug_id VARCHAR(50) NOT NULL,\n    brand_name VARCHAR(255),\n    generic_name VARCHAR(255),\n    prescription_date TEXT,\n    end_date TEXT,\n    dosage VARCHAR(50),\n    administration_route VARCHAR(50),\n    frequency VARCHAR(100),\n    prescribing_doctor VARCHAR(255),\n    pharmacy_name VARCHAR(255),\n    pharmacy_address TEXT,\n    refills_remaining TEXT,\n    special_instructions TEXT,\n    status VARCHAR(50) CHECK (status IN ('Active', 'Completed', 'On Hold', 'Discontinued')),\n    side_effects_reported TEXT\n);\n ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        180,
+        -60
+      ],
+      "id": "09632a37-000a-4894-bf38-cd465b9993b6",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "ViAdiUBGBuFJKeLL",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Read From File": {
+      "main": [
+        [
+          {
+            "node": "Convert To Spreadsheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert To Spreadsheet": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Read From File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2ac724dc-5619-4fa6-8f06-647437fdd8e7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
+  },
+  "id": "3BHy4hqF5b8GqbnJ",
+  "tags": [
+    {
+      "createdAt": "2025-03-14T12:40:29.430Z",
+      "updatedAt": "2025-03-14T12:40:29.430Z",
+      "id": "UHWVebjxDrhzTcnX",
+      "name": "GVP-Workshop"
+    }
+  ]
+}
