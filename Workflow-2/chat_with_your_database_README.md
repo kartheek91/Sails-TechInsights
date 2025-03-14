@@ -17,7 +17,7 @@ This n8n workflow creates an AI-powered chat interface that can interact with a 
 
    ![image](https://github.com/user-attachments/assets/379f3872-42b1-4a30-a6db-49885b2538b1)
 
-   - Uses the model which we download and run in ollama i.e ```ollama run model```
+   - Uses the model which we download and run in ollama i.e ```ollama run <your-model-name>```
    - Provides natural language processing capabilities
    - Handles user queries and generates responses
 
