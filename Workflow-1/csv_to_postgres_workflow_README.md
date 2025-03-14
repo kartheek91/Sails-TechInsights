@@ -44,6 +44,9 @@ This workflow is designed to automate the process of importing and updating user
 ```sh
 /data/shared/<place-your-file-here>
 ```
+2. You can find this path inside the n8n-starter-kit once you have cloned it.
+
+![image](https://github.com/user-attachments/assets/9b7f85dc-680b-490c-b5fc-298452bd0061)
 
 3. Execute the workflow manually
 4. The workflow will automatically create the table if it doesn't exist and import/update the data
