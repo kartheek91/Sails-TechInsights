@@ -1,0 +1,50 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+vnev/
+.env/
+*.env
+
+# Configuration files
+*.DS_Store
+*.vscode/
+*.idea/
+
+# Python cache files
+*.pyo
+*.pyd
+*.pdb
+
+# Logs and database
+*.log
+*.sqlite3
+
+# Test coverage
+.coverage
+htmlcov/
+
+# Jupyter Notebook output
+*.nbconvert.ipynb
+*.out
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Package management
+*.pip-wheel-cache/
+pip-log.txt
+pip-delete-this-directory.txt
+__pypackages__/
+
+# Environment files
+.env
+*.envrc
