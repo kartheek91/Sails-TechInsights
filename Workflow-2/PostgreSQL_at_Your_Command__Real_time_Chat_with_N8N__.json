@@ -1,37 +1,37 @@
 {
-  "name": "Workshop File 2",
+  "name": "PostgreSQL at Your Command: Real-time Chat with N8N!​",
   "nodes": [
     {
       "parameters": {
         "options": {}
       },
-      "id": "7600194e-a9b8-4d38-a938-9bbc0fe1f54b",
+      "id": "037d1c69-682b-4013-979e-26994019849d",
       "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "position": [
-        400,
-        -100
+        -20,
+        -340
       ],
       "webhookId": "cf1de04f-3e38-426c-89f0-3bdb110a5dcf",
       "typeVersion": 1.1
     },
     {
       "parameters": {
-        "model": "qwen2.5:0.5b",
+        "model": "llama3.2:latest",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        600,
-        120
+        180,
+        -120
       ],
-      "id": "c369c901-6b62-4fa1-bfef-c210bc0fdff6",
+      "id": "24527791-546b-46b3-b4b0-9db6eee3107e",
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "DBiIN8AD6HthF2KK",
-          "name": "Ollama account"
+          "id": "xHuYe0MDGOs9IpBW",
+          "name": "Local Ollama service"
         }
       }
     },
@@ -42,10 +42,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.7,
       "position": [
-        680,
-        -100
+        260,
+        -340
       ],
-      "id": "be82ec61-14f2-4b72-a116-887b96aad1a7",
+      "id": "71fc5157-1ea6-47b8-aaf4-01429e23db77",
       "name": "AI Agent"
     },
     {
@@ -53,31 +53,29 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        780,
-        120
+        360,
+        -120
       ],
-      "id": "693c993d-2337-4613-9ec4-78e9d9f81f3d",
+      "id": "58e69994-810e-4186-b749-5a862298a973",
       "name": "Window Buffer Memory"
     },
     {
       "parameters": {
-        "descriptionType": "manual",
-        "toolDescription": "Get the data from postgres",
         "operation": "executeQuery",
-        "query": "SELECT * FROM USER_DRUG_MAPPING",
+        "query": "SELECT * FROM drugitem LIMIT 5",
         "options": {}
       },
-      "id": "07389f09-0e89-42c1-bf1b-15ad6255491a",
+      "id": "f4eef131-d56e-4ac1-8b8b-8606eceb1b96",
       "name": "Execute SQL Query",
       "type": "n8n-nodes-base.postgresTool",
       "position": [
-        960,
-        120
+        540,
+        -120
       ],
       "typeVersion": 2.5,
       "credentials": {
         "postgres": {
-          "id": "Atgwgm5vBTOYKVJa",
+          "id": "ViAdiUBGBuFJKeLL",
           "name": "Postgres account"
         }
       }
@@ -90,17 +88,17 @@
         "query": "SELECT \n    table_schema,\n    table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE'\n    AND table_schema NOT IN ('pg_catalog', 'information_schema')\nORDER BY table_schema, table_name;",
         "options": {}
       },
-      "id": "e28053dc-d70f-4e4c-9cf3-d615083cd682",
+      "id": "99854990-102e-4438-859e-02392f98ac64",
       "name": "Get DB Schema and Tables List",
       "type": "n8n-nodes-base.postgresTool",
       "position": [
-        1140,
-        120
+        720,
+        -120
       ],
       "typeVersion": 2.5,
       "credentials": {
         "postgres": {
-          "id": "Atgwgm5vBTOYKVJa",
+          "id": "ViAdiUBGBuFJKeLL",
           "name": "Postgres account"
         }
       }
@@ -168,11 +166,18 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "dfc98f26-f4f5-4cfa-a305-057947019564",
+  "versionId": "69a2b910-7a11-44fa-8773-f273b95c8a2e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
   },
-  "id": "J53DysEk6KLEcgaY",
-  "tags": []
+  "id": "s1nrl3rAavQJB6T0",
+  "tags": [
+    {
+      "createdAt": "2025-03-14T12:40:29.430Z",
+      "updatedAt": "2025-03-14T12:40:29.430Z",
+      "id": "UHWVebjxDrhzTcnX",
+      "name": "GVP-Workshop"
+    }
+  ]
 }

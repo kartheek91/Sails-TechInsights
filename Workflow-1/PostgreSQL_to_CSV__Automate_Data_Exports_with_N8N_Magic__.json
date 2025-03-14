@@ -1,27 +1,27 @@
 {
-  "name": "My workflow 5",
+  "name": "PostgreSQL to CSV: Automate Data Exports with N8N Magic!​",
   "nodes": [
     {
       "parameters": {},
-      "id": "0c778320-201a-412e-b472-b304b5d81940",
+      "id": "cc874e91-34f4-4b01-8267-77434bd953c3",
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        400,
-        260
+        -40,
+        -60
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
-        "filePath": "/data/shared/user_drug_mappingg.csv"
+        "filePath": "/data/shared/drugitem.csv"
       },
-      "id": "204d7497-2377-42e0-a5f2-743c81d27f97",
+      "id": "b9e9407e-f28d-49d2-84b1-4a7b2b097334",
       "name": "Read From File",
       "type": "n8n-nodes-base.readBinaryFile",
       "position": [
-        820,
-        260
+        380,
+        -60
       ],
       "typeVersion": 1
     },
@@ -29,12 +29,12 @@
       "parameters": {
         "options": {}
       },
-      "id": "c290f636-621e-4376-b0e0-c7ae1a567516",
+      "id": "884c63c7-edcc-493f-a947-57e3f6768236",
       "name": "Convert To Spreadsheet",
       "type": "n8n-nodes-base.spreadsheetFile",
       "position": [
-        1020,
-        260
+        580,
+        -60
       ],
       "typeVersion": 1
     },
@@ -48,9 +48,8 @@
         },
         "table": {
           "__rl": true,
-          "value": "user_drug_mapping",
-          "mode": "list",
-          "cachedResultName": "user_drug_mapping"
+          "value": "drugitem",
+          "mode": "name"
         },
         "columns": {
           "mappingMode": "autoMapInputData",
@@ -219,17 +218,17 @@
         },
         "options": {}
       },
-      "id": "67d3f2f0-e781-4cc3-b2bc-e704f529093e",
+      "id": "d2f4a5bb-0496-4ba2-a327-b48670de5880",
       "name": "Postgres",
       "type": "n8n-nodes-base.postgres",
       "position": [
-        1280,
-        260
+        840,
+        -60
       ],
       "typeVersion": 2.5,
       "credentials": {
         "postgres": {
-          "id": "j6V7m2CEG04VUGZ1",
+          "id": "ViAdiUBGBuFJKeLL",
           "name": "Postgres account"
         }
       }
@@ -237,20 +236,20 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "CREATE TABLE if not exists user_drug_mapping (\n    mapping_id SERIAL PRIMARY KEY,\n    user_id INT NOT NULL,\n    drug_id VARCHAR(50) NOT NULL,\n    brand_name VARCHAR(255),\n    generic_name VARCHAR(255),\n    prescription_date TEXT,\n    end_date TEXT,\n    dosage VARCHAR(50),\n    administration_route VARCHAR(50),\n    frequency VARCHAR(100),\n    prescribing_doctor VARCHAR(255),\n    pharmacy_name VARCHAR(255),\n    pharmacy_address TEXT,\n    refills_remaining TEXT,\n    special_instructions TEXT,\n    status VARCHAR(50) CHECK (status IN ('Active', 'Completed', 'On Hold', 'Discontinued')),\n    side_effects_reported TEXT\n);\n ",
+        "query": "CREATE TABLE if not exists drugitem (\n    mapping_id SERIAL PRIMARY KEY,\n    user_id INT NOT NULL,\n    drug_id VARCHAR(50) NOT NULL,\n    brand_name VARCHAR(255),\n    generic_name VARCHAR(255),\n    prescription_date TEXT,\n    end_date TEXT,\n    dosage VARCHAR(50),\n    administration_route VARCHAR(50),\n    frequency VARCHAR(100),\n    prescribing_doctor VARCHAR(255),\n    pharmacy_name VARCHAR(255),\n    pharmacy_address TEXT,\n    refills_remaining TEXT,\n    special_instructions TEXT,\n    status VARCHAR(50) CHECK (status IN ('Active', 'Completed', 'On Hold', 'Discontinued')),\n    side_effects_reported TEXT\n);\n ",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.5,
       "position": [
-        620,
-        260
+        180,
+        -60
       ],
-      "id": "d80e79f6-2ad8-4f5f-9738-a337608898b1",
+      "id": "09632a37-000a-4894-bf38-cd465b9993b6",
       "name": "Postgres1",
       "credentials": {
         "postgres": {
-          "id": "j6V7m2CEG04VUGZ1",
+          "id": "ViAdiUBGBuFJKeLL",
           "name": "Postgres account"
         }
       }
@@ -307,11 +306,18 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "371e4864-29a9-470c-9717-594afaa0e7b4",
+  "versionId": "2ac724dc-5619-4fa6-8f06-647437fdd8e7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
   },
-  "id": "oCo2Jfxi6Tq1FGuL",
-  "tags": []
+  "id": "3BHy4hqF5b8GqbnJ",
+  "tags": [
+    {
+      "createdAt": "2025-03-14T12:40:29.430Z",
+      "updatedAt": "2025-03-14T12:40:29.430Z",
+      "id": "UHWVebjxDrhzTcnX",
+      "name": "GVP-Workshop"
+    }
+  ]
 }
