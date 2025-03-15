@@ -35,3 +35,70 @@ This guide will walk you through the process of downloading and installing Visua
   - VS Code offers a wide range of extensions to enhance your development experience. Explore the Extensions Marketplace to find tools that suit your needs.
 
 By following these steps, you will have Visual Studio Code installed with the Jupyter Notebook extension, enabling you to work with Jupyter Notebooks directly within VS Code.
+
+#Issues
+
+
+## Resolving `OSError: [Errno 2] No such file or directory` in Windows
+
+![image](https://github.com/user-attachments/assets/096516b8-e3e7-4059-b9db-aaa7932997dd)
+
+## **Issue Description**
+While installing `ipykernel` or other packages in a Python virtual environment on Windows, the following error may occur:
+
+```
+ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory:
+'C:\Users\<username>\<path>\requests\packages\urllib3\packages\ssl_match_hostname\_implementation.pyi'
+```
+
+### **Cause**
+This issue occurs because **Windows Long Path support** is disabled, causing file paths longer than 260 characters to fail.
+
+---
+
+## **Solution**
+### **Step 1: Enable Long Path Support in Windows Registry**
+1. Press `Win + R`, type `regedit`, and press **Enter**.
+2. Navigate to the following path:  
+   ```
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
+```
+3. Find the entry called **LongPathsEnabled**.
+4. If it doesn't exist:
+   - Right-click anywhere in the right pane.
+   - Select **New** → **DWORD (32-bit) Value**.
+   - Name it **LongPathsEnabled**.
+5. Double-click **LongPathsEnabled** and set its **Value data** to `1`.
+6. Click **OK** and restart your computer.
+
+### **Step 2: Enable Long Path Support in Group Policy (Optional)**
+If you have Windows Professional or Enterprise:
+1. Press `Win + R`, type `gpedit.msc`, and press **Enter**.
+2. Navigate to:  
+   ```
+Computer Configuration -> Administrative Templates -> System -> Filesystem
+```
+3. Double-click **Enable Win32 long paths**.
+4. Select **Enabled** and click **OK**.
+
+### **Step 3: Reinstall the Required Packages**
+1. Activate your virtual environment:
+   ```bash
+   .\venv\Scripts\activate    # For Windows
+   source venv/bin/activate     # For Mac/Linux
+   ```
+
+2. Upgrade `pip` and install `ipykernel` again:
+   ```bash
+   python -m pip install --upgrade pip
+   pip install ipykernel
+   ```
+
+---
+
+### **Step 4: Restart VS Code**
+After completing these steps, restart VS Code and rerun your notebook.
+
+If you continue facing issues, feel free to ask for further assistance! 🚀
+
+
