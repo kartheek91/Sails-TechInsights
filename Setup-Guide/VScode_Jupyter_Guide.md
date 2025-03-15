@@ -60,9 +60,7 @@ This issue occurs because **Windows Long Path support** is disabled, causing fil
 ### **Step 1: Enable Long Path Support in Windows Registry**
 1. Press `Win + R`, type `regedit`, and press **Enter**.
 2. Navigate to the following path:  
-   ```
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
-```
+   ```HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem```
 3. Find the entry called **LongPathsEnabled**.
 4. If it doesn't exist:
    - Right-click anywhere in the right pane.
