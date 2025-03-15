@@ -73,9 +73,7 @@ This issue occurs because **Windows Long Path support** is disabled, causing fil
 If you have Windows Professional or Enterprise:
 1. Press `Win + R`, type `gpedit.msc`, and press **Enter**.
 2. Navigate to:  
-   ```
-Computer Configuration -> Administrative Templates -> System -> Filesystem
-```
+   ```Computer Configuration -> Administrative Templates -> System -> Filesystem```
 3. Double-click **Enable Win32 long paths**.
 4. Select **Enabled** and click **OK**.
 
